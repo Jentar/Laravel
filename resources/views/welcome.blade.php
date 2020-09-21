@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,35 +9,44 @@
 </head>
     <body class="p-12">
          <table class="table-auto w-full">
-            <thead>
+            <thead class="font-bold">
                  <tr>
-                    <td class="px-4 py-2">Pelkiri</td>
-                    <td class="px-4 py-2">Aasta</td>
-                    <td class="px-4 py-2">Keel</td>
-                    <td class="px-4 py-2">Hind</td>
-                    <td class="px-4 py-2">Laoseis</td>
-                    <td class="px-4 py-2">Lehekülgi</td>
-                    <td class="px-4 py-2">Tüüp</td>
+                    <td class="px-4 py-2"><a href="?sort=title&order={{ $order }}">Pealkiri</a></td>
+                    <td class="px-4 py-2"><a href="?sort=release_date&order={{ $order }}">Aasta</td>
+                    <td class="px-4 py-2"><a href="?sort=language&order={{ $order }}">Keel</td>
+                    <td class="px-4 py-2"><a href="?sort=price&order={{ $order }}">Hind</td>
+                    <td class="px-4 py-2"><a href="?sort=stock_saldo&order={{ $order }}">Laoseis</td>
+                    <td class="px-4 py-2"><a href="?sort=pages&order={{ $order }}">Lehekülgi</td>
+                    <td class="px-4 py-2"><a href="?sort=type&order={{ $order }}">Tüüp</td>
                 </tr>
             </thead>
-        </table>
-    </body>
-
+            <tbody>
+            
     @foreach($books as $book)
 
-    <tr>
-        <td class="border px-4 py-2">{{ $book->title }}</td>
-        <td class="border px-4 py-2">{{ $book->release_date }}</td>
-        <td class="border px-4 py-2">{{ $book->language }}</td>
-        <td class="border px-4 py-2">{{ $book->price }}</td>
-        <td class="border px-4 py-2">{{ $book->stock_saldo }}</td>
-        <td class="border px-4 py-2">{{ $book->pages }}</td>
-        <td class="border px-4 py-2">{{ $book->type }}</td>
-    </tr>
+<tr>
+    <td class="border px-4 py-2">{{ $book->title }}</td>
+    <td class="border px-4 py-2">{{ $book->release_date }}</td>
+    <td class="border px-4 py-2">{{ $book->language }}</td>
+    <td class="border px-4 py-2">{{ $book->price }}</td>
+    <td class="border px-4 py-2">{{ $book->stock_saldo }}</td>
+    <td class="border px-4 py-2">{{ $book->pages }}</td>
+    <td class="border px-4 py-2">{{ $book->type }}</td>
+</tr>
 
-    @andforeach
+@endforeach
+
+</tbody>
+</table>
+
+<div class="mt-4">
+
+    {{ $books->links() }}
+
+</div>
 
     </tbody>
     </table>
+    </body>
 
 </html>
